@@ -7,10 +7,15 @@ import AdminHome from './scenes/admin/AdminHome'
 import AdminLayout from './scenes/admin/AdminLayout'
 import CollectionCenter from './scenes/collection-center/CollectionCenter'
 import Donor from './scenes/donor/Donor'
+import axios from "axios"
+import SnackBar from './scenes/main/SnackBar'
+
 
 function App() {
+  axios.defaults.baseURL = 'http://localhost:5000';
   return (
     <BrowserRouter>
+    <SnackBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />

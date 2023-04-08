@@ -8,6 +8,8 @@ import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom'
 import { useState } from 'react';
 import NavBar from '../../scenes/main/NavBar'
+import axios from "axios"
+import { toast } from 'react-toastify';
 
 function Register() {
   // form validation
@@ -109,7 +111,23 @@ function Register() {
     const errors = validateFormData(formData);
     setFormErrors(errors)
     if (Object.keys(errors).length === 0) {
-      console.log('No errors')
+      // connect signup api
+      axios.post('/user/signup', {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        role,
+        email: formData.email,
+        password: formData.password,
+      })
+        .then((res) => {
+          console.log(res)
+          toast.success(res.data.message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
     else {
       console.log("Errror found in validation")
