@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom'
+import NavBar from '../../scenes/main/NavBar'
 
 function Login() {
 
@@ -59,75 +60,79 @@ function Login() {
   }
 
   return (
-    <Container minWidth="md" maxWidth="md">
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: '8rem' }}>
-        <Card sx={{ width: '40%', borderRadius: '1rem', p: '1rem', boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <Typography variant="h6" sx={{ fontWeight: 400 }}>Login</Typography>
+    <>
+      <NavBar />
+
+      <Container minWidth="md" maxWidth="md">
+        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: '8rem' }}>
+          <Card sx={{ width: '40%', borderRadius: '1rem', p: '1rem', boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography variant="h6" sx={{ fontWeight: 400 }}>Login</Typography>
 
 
-          <Box
-            component="form"
-            onSubmit={HandleSubmit} sx={{ mt: 2 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  error={!!formErrors.email}
-                  helperText={formErrors.email}
-                  size="small"
-                />
-              </Grid>
+            <Box
+              component="form"
+              onSubmit={HandleSubmit} sx={{ mt: 2 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    error={!!formErrors.email}
+                    helperText={formErrors.email}
+                    size="small"
+                  />
+                </Grid>
 
 
-              <Grid item xs={12}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  error={!!formErrors.password}
-                  helperText={formErrors.password}
-                  size="small"
-                />
-              </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    error={!!formErrors.password}
+                    helperText={formErrors.password}
+                    size="small"
+                  />
+                </Grid>
 
 
 
-              <Grid item xs={12}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Login
-                </Button>
-              </Grid>
-              <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <RouterLink to="/register">
-                    <Link component="span" variant="caption" >
-                      {"Create a New Account"}
-                    </Link>
-                  </RouterLink>
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Login
+                  </Button>
+                </Grid>
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
+                    <RouterLink to="/register">
+                      <Link component="span" variant="caption" >
+                        {"Create a New Account"}
+                      </Link>
+                    </RouterLink>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Box>
-        </Card>
-      </Box>
-    </Container>
+            </Box>
+          </Card>
+        </Box>
+      </Container>
+    </>
   )
 }
 

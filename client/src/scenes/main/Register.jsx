@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom'
 import { useState } from 'react';
+import NavBar from '../../scenes/main/NavBar'
 
 function Register() {
   // form validation
@@ -25,8 +26,8 @@ function Register() {
 
   const [role, setRole] = useState('')
   const handleChange = (event) => {
-    if (event.target.value === 'reliefCenter') {
-      setRole('reliefCenter')
+    if (event.target.value === 'donor') {
+      setRole('donor')
     }
     else if (event.target.value === 'collectionCenter') {
       setRole('collectionCenter')
@@ -115,149 +116,152 @@ function Register() {
     }
   }
   return (
-    <Container minWidth="lg" maxWidth="lg">
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: '8rem' }}>
-        <Card sx={{ width: '40%', borderRadius: '1rem', p: '1rem', boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <Typography variant="h6" color="primary" sx={{ fontWeight: 400 }}>Register</Typography>
+    <>
+      <NavBar />
+      <Container minWidth="lg" maxWidth="lg">
+        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: '8rem' }}>
+          <Card sx={{ width: '40%', borderRadius: '1rem', p: '1rem', boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography variant="h6" color="primary" sx={{ fontWeight: 400 }}>Register</Typography>
 
 
-          <Box
-            component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="First Name"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  error={!!formErrors.firstName}
-                  helperText={formErrors.firstName}
+            <Box
+              component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="First Name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    error={!!formErrors.firstName}
+                    helperText={formErrors.firstName}
 
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Last name"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  error={!!formErrors.lastName}
-                  helperText={formErrors.lastName}
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
-
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  error={!!formErrors.email}
-                  helperText={formErrors.email}
-
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Last name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    error={!!formErrors.lastName}
+                    helperText={formErrors.lastName}
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
 
 
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Phone"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleInputChange}
-                  error={!!formErrors.phoneNumber}
-                  helperText={formErrors.phoneNumber}
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    error={!!formErrors.email}
+                    helperText={formErrors.email}
 
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
-
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  error={!!formErrors.password}
-                  helperText={formErrors.password}
-
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Confirm Password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  error={!!formErrors.confirmPassword}
-                  helperText={formErrors.confirmPassword}
-
-                  autoFocus
-                  fullWidth
-                  size="small"
-                />
-
-              </Grid>
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
 
 
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  select
-                  label="Role"
-                  name='userRole'
-                  value={role}
-                  sx={{ width: '100%' }}
-                  error={!!formErrors.role}
-                  helperText={formErrors.role}
-                  onChange={handleChange}
-                  size="small"
-                >
-                  <MenuItem value='reliefCenter'>Relief Center</MenuItem>
-                  <MenuItem value='collectionCenter'>Collection Center</MenuItem>
-                </TextField>
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Create Account
-                </Button>
-              </Grid>
-              <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <RouterLink to="/login">
-                    <Link component="span" variant="caption">
-                      {"Already have an account? Sign In"}
-                    </Link>
-                  </RouterLink>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Phone"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    error={!!formErrors.phoneNumber}
+                    helperText={formErrors.phoneNumber}
+
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    error={!!formErrors.password}
+                    helperText={formErrors.password}
+
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    error={!!formErrors.confirmPassword}
+                    helperText={formErrors.confirmPassword}
+
+                    autoFocus
+                    fullWidth
+                    size="small"
+                  />
+
+                </Grid>
+
+
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    select
+                    label="Role"
+                    name='userRole'
+                    value={role}
+                    sx={{ width: '100%' }}
+                    error={!!formErrors.role}
+                    helperText={formErrors.role}
+                    onChange={handleChange}
+                    size="small"
+                  >
+                    <MenuItem value='donor'>Donor</MenuItem>
+                    <MenuItem value='collectionCenter'>Collection Center</MenuItem>
+                  </TextField>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Create Account
+                  </Button>
+                </Grid>
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
+                    <RouterLink to="/login">
+                      <Link component="span" variant="caption">
+                        {"Already have an account? Sign In"}
+                      </Link>
+                    </RouterLink>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Box>
-        </Card>
-      </Box>
-    </Container>
+            </Box>
+          </Card>
+        </Box>
+      </Container>
+    </>
   )
 }
 
